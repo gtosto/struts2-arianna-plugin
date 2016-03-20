@@ -20,26 +20,26 @@ import java.util.Comparator;
 
 /**
  * A simple crumb comparator that just check crumbs' names.
- * 
+ *
  * @author Giovanni Tosto
  * @version $Id$
  */
 public class NameComparator implements Comparator<Crumb>, Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public int compare(Crumb c1, Crumb c2) {
-		if (c1 == c2)
-			return 0;
-		if (c1 == null && c2 != null)
-			return +1;
-		if (c1 != null && c2 == null)
-			return -1;
-		if (c1.name != null)
-			return c1.name.compareTo(c2.name);
-		if (c2.name != null)
-			return c2.name.compareTo(c1.name);
+    public int compare(Crumb c1, Crumb c2) {
+        if (c1 == c2)
+            return 0;
+        if (c1 == null && c2 != null)
+            return +1;
+        if (c1 != null && c2 == null)
+            return -1;
+        if (c1.name != null)
+            return c1.name.compareTo(c2.name);
+        if (c2.name != null)
+            return c2.name.compareTo(c1.name);
 
-		return c1.name.compareTo(c2.name);
-	}
+        return c1.name.compareTo(c2.name);
+    }
 
 }

@@ -28,10 +28,10 @@ import com.opensymphony.xwork2.inject.Inject;
 /**
  * An utility class used to convert a
  * <em>fully qualified class name<em> to comparator instances.
- * 
- * This converter is used mainly by the struts framework to convert <acronym>fqcn<acronym> when 
+ * <p>
+ * This converter is used mainly by the struts framework to convert <acronym>fqcn<acronym> when
  * initializing interceptors instances.
- * 
+ *
  * @author Giovanni Tosto
  * @version $Id: CrumbComparatorConverter.java 289 2011-06-14 19:41:01Z
  *          giovanni.tosto $
@@ -44,29 +44,29 @@ public class CrumbComparatorConverter extends StrutsTypeConverter {
     AriannaPlugin plugin;
 
     public Object convertFromString(Map context, String[] values, Class toClass) {
-	if (values == null)
-	    return null;
+        if (values == null)
+            return null;
 
-	if (values.length != 1) {
-	    throw new TypeConversionException(
-		    "Cannot convert non scalar value " + values);
-	}
+        if (values.length != 1) {
+            throw new TypeConversionException(
+                    "Cannot convert non scalar value " + values);
+        }
 
-	Comparator<Crumb> comparator = plugin
-		.lookupComparatorByClass(values[0]);
-	if (comparator != null) {
-	    String msg = String.format("{%s} Converted %s -> %s ", this,
-		    values[0], comparator);
-	    LOG.debug(msg);
-	    return comparator;
-	}
+        Comparator<Crumb> comparator = plugin
+                .lookupComparatorByClass(values[0]);
+        if (comparator != null) {
+            String msg = String.format("{%s} Converted %s -> %s ", this,
+                    values[0], comparator);
+            LOG.debug(msg);
+            return comparator;
+        }
 
-	throw new TypeConversionException("Cannot convert class " + values[0]
-		+ " to a Comparator");
+        throw new TypeConversionException("Cannot convert class " + values[0]
+                + " to a Comparator");
 
     }
 
     public String convertToString(Map context, Object o) {
-	return o == null ? null : o.getClass().getName();
+        return o == null ? null : o.getClass().getName();
     }
 }

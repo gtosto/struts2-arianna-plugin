@@ -159,9 +159,9 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
         Map session = invocation.getInvocationContext().getSession();
         BreadCrumbTrail bcTrail = (BreadCrumbTrail) session.get(CRUMB_KEY);
 
-		/*
-		 * TODO make sure to put one breadcrumb trail only
-		 */
+        /*
+         * TODO make sure to put one breadcrumb trail only
+         */
         if (bcTrail == null) {
             synchronized (LOCK) {
                 bcTrail = new BreadCrumbTrail();
@@ -191,9 +191,9 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
             Comparator<Crumb> comparator = defaultComparator;
             int maxCrumbs = trail.maxCrumbs;
 
-			/*
-			 * override defaults (if required)
-			 */
+            /*
+             * override defaults (if required)
+             */
             if (annotation.rewind() != RewindMode.DEFAULT)
                 mode = annotation.rewind();
 
@@ -201,13 +201,13 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
                 comparator = plugin.lookupComparatorByClass(annotation.comparator());
             }
 
-			/*
-			 * Retrieve stored crumbs and synchronize on it.
-			 *
-			 * synchronized region is needed to prevent
-			 * ConcurrentModificationException(s) for requests (operating on the
-			 * same session) that want modify the bread crumbs trail.
-			 */
+            /*
+             * Retrieve stored crumbs and synchronize on it.
+             *
+             * synchronized region is needed to prevent
+             * ConcurrentModificationException(s) for requests (operating on the
+             * same session) that want modify the bread crumbs trail.
+             */
 
             Stack<Crumb> crumbs = trail.getCrumbs();
 
@@ -216,9 +216,9 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
 
                 Crumb last = (crumbs.size() == 0) ? null : crumbs.lastElement();
 
-				/*
-				 * compare current and last crumbs
-				 */
+                /*
+                 * compare current and last crumbs
+                 */
                 if (comparator.compare(current, last) != 0) {
                     int dupIdx = trail.indexOf(current, comparator);
 
@@ -269,16 +269,16 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
         Method method = Utils.findMethod(aclass, methodName);
         BreadCrumb crumb = null;
 
-		/*
-		 * Check if it is an annotated method
-		 */
+        /*
+         * Check if it is an annotated method
+         */
         if (method != null) {
             crumb = method.getAnnotation(BreadCrumb.class);
         }
 
-		/*
-		 * Check if we have an annotated class
-		 */
+        /*
+         * Check if we have an annotated class
+         */
         if (crumb == null) {
             crumb = (BreadCrumb) aclass.getAnnotation(BreadCrumb.class);
         }

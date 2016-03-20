@@ -22,122 +22,121 @@ import java.util.Stack;
 
 /**
  * Represents the bread crumbs trail in its totality.
- * 
+ *
  * @author Giovanni Tosto
  * @version $Id$
  */
 public class BreadCrumbTrail implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * The name of this trail. (Not actually used)
-	 */
-	String name;
+    /**
+     * The name of this trail. (Not actually used)
+     */
+    String name;
 
-	/**
-	 * The maximum number of crumbs the trail must keep.
-	 */
-	int maxCrumbs;
+    /**
+     * The maximum number of crumbs the trail must keep.
+     */
+    int maxCrumbs;
 
-	// /**
-	// * the rewind mode the trail will use if not specified otherwise
-	// */
-	// RewindMode rewindMode;
-	//
-	// /**
-	// * The comparator the trail will use if not specified otherwise.
-	// */
-	// Comparator<Crumb> comparator;
+    // /**
+    // * the rewind mode the trail will use if not specified otherwise
+    // */
+    // RewindMode rewindMode;
+    //
+    // /**
+    // * The comparator the trail will use if not specified otherwise.
+    // */
+    // Comparator<Crumb> comparator;
 
-	/**
-	 * the actual crumbs kept by the trail.
-	 */
-	Stack<Crumb> crumbs = new Stack<Crumb>();
+    /**
+     * the actual crumbs kept by the trail.
+     */
+    Stack<Crumb> crumbs = new Stack<Crumb>();
 
-	// utility methods
-	// /////////////////////////////////////////
+    // utility methods
+    // /////////////////////////////////////////
 
-	/**
-	 * Rewinds the trail to the crumb at the specified position.
-	 * 
-	 * @param index
-	 */
-	public void rewindAt(int index) {
-		for (int i = index + 1, size = crumbs.size(); i < size; i++) {
-			crumbs.remove(index + 1);
-		}
-	}
+    /**
+     * Rewinds the trail to the crumb at the specified position.
+     *
+     * @param index
+     */
+    public void rewindAt(int index) {
+        for (int i = index + 1, size = crumbs.size(); i < size; i++) {
+            crumbs.remove(index + 1);
+        }
+    }
 
-	// public int indexOf(Crumb crumb)
-	// {
-	// return indexOf(crumb, comparator);
-	// }
+    // public int indexOf(Crumb crumb)
+    // {
+    // return indexOf(crumb, comparator);
+    // }
 
-	/**
-	 * Find the index of the first crumb that is equals to the given crumb:
-	 * <var>crumb</var>. Here equals means ...
-	 * 
-	 * @param crumb
-	 *            the crumbs to compare.
-	 * @return the index of the first crumb <em>equals</em> to <var>crumb</var>
-	 *         or <code>-1</code> if no such crumb exists.
-	 */
-	public int indexOf(Crumb crumb, Comparator<Crumb> comparator) {
-		ListIterator<Crumb> itor = crumbs.listIterator();
+    /**
+     * Find the index of the first crumb that is equals to the given crumb:
+     * <var>crumb</var>. Here equals means ...
+     *
+     * @param crumb the crumbs to compare.
+     * @return the index of the first crumb <em>equals</em> to <var>crumb</var>
+     * or <code>-1</code> if no such crumb exists.
+     */
+    public int indexOf(Crumb crumb, Comparator<Crumb> comparator) {
+        ListIterator<Crumb> itor = crumbs.listIterator();
 
-		while (itor.hasNext()) {
-			Crumb c = itor.next();
-			if (comparator.compare(c, crumb) == 0) {
-				return itor.previousIndex();
-			}
-		}
-		return -1;
-	}
+        while (itor.hasNext()) {
+            Crumb c = itor.next();
+            if (comparator.compare(c, crumb) == 0) {
+                return itor.previousIndex();
+            }
+        }
+        return -1;
+    }
 
-	// public int lastIndexOf(Crumb crumb) {
-	// return lastIndexOf(crumb, comparator);
-	// }
+    // public int lastIndexOf(Crumb crumb) {
+    // return lastIndexOf(crumb, comparator);
+    // }
 
-	public int lastIndexOf(Crumb crumb, Comparator<Crumb> comparator) {
-		ListIterator<Crumb> itor = crumbs.listIterator(crumbs.size());
+    public int lastIndexOf(Crumb crumb, Comparator<Crumb> comparator) {
+        ListIterator<Crumb> itor = crumbs.listIterator(crumbs.size());
 
-		while (itor.hasPrevious()) {
-			Crumb c = itor.previous();
-			if (comparator.compare(c, crumb) == 0) {
-				return itor.nextIndex();
-			}
-		}
+        while (itor.hasPrevious()) {
+            Crumb c = itor.previous();
+            if (comparator.compare(c, crumb) == 0) {
+                return itor.nextIndex();
+            }
+        }
 
-		return -1;
-	}
+        return -1;
+    }
 
-	// properties setters
-	// /////////////////////////////////////////
+    // properties setters
+    // /////////////////////////////////////////
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setMaxCrumbs(int maxCrumbs) {
-		this.maxCrumbs = maxCrumbs;
-	}
+    public void setMaxCrumbs(int maxCrumbs) {
+        this.maxCrumbs = maxCrumbs;
+    }
 
-	// properties getters
-	// /////////////////////////////////////////
+    // properties getters
+    // /////////////////////////////////////////
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getMaxCrumbs() {
-		return maxCrumbs;
-	}
+    public int getMaxCrumbs() {
+        return maxCrumbs;
+    }
 
-	public Stack<Crumb> getCrumbs() {
-		if (crumbs == null) {
-			crumbs = new Stack<Crumb>();
-		}
-		return crumbs;
-	}
+    public Stack<Crumb> getCrumbs() {
+        if (crumbs == null) {
+            crumbs = new Stack<Crumb>();
+        }
+        return crumbs;
+    }
 }

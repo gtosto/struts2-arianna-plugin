@@ -11,35 +11,34 @@ import com.opensymphony.xwork2.ActionProxy;
 
 public abstract class BreadcrumbTestCase extends StrutsTestCase {
 
-	protected Map<String, Object> sessionMap;
+    protected Map<String, Object> sessionMap;
 
-	protected BreadCrumbTrail getBreadCrumbTrail(Map sessionMap) {
-		Object object = sessionMap.get(BreadCrumbInterceptor.CRUMB_KEY);
-		assertTrue("key " + BreadCrumbInterceptor.CRUMB_KEY + " is not a BreadCrumbTrail", object instanceof BreadCrumbTrail);
-		return (BreadCrumbTrail) object;
-	}
+    protected BreadCrumbTrail getBreadCrumbTrail(Map sessionMap) {
+        Object object = sessionMap.get(BreadCrumbInterceptor.CRUMB_KEY);
+        assertTrue("key " + BreadCrumbInterceptor.CRUMB_KEY + " is not a BreadCrumbTrail", object instanceof BreadCrumbTrail);
+        return (BreadCrumbTrail) object;
+    }
 
-	// ConfigurationProvider p = new StrutsXmlConfigurationProvider("pippo",
-	// true, null);
+    // ConfigurationProvider p = new StrutsXmlConfigurationProvider("pippo",
+    // true, null);
 
-	@Override
-	protected void setupBeforeInitDispatcher() throws Exception {
-		final String CONFIG_PATHS = "struts-default.xml,struts-plugin.xml,test-struts.xml";
-		dispatcherInitParams = new HashMap();
-		dispatcherInitParams.put("config", CONFIG_PATHS);
-	}
+    @Override
+    protected void setupBeforeInitDispatcher() throws Exception {
+        final String CONFIG_PATHS = "struts-default.xml,struts-plugin.xml,test-struts.xml";
+        dispatcherInitParams = new HashMap();
+        dispatcherInitParams.put("config", CONFIG_PATHS);
+    }
 
-	/**
-	 * Override getActionProxy so that we can initialize a session map.
-	 * 
-	 */
-	@Override
-	protected ActionProxy getActionProxy(String uri) {
-		// TODO Auto-generated method stub
-		ActionProxy proxy = super.getActionProxy(uri);
-		proxy.getInvocation().getInvocationContext().setSession(sessionMap);
+    /**
+     * Override getActionProxy so that we can initialize a session map.
+     */
+    @Override
+    protected ActionProxy getActionProxy(String uri) {
+        // TODO Auto-generated method stub
+        ActionProxy proxy = super.getActionProxy(uri);
+        proxy.getInvocation().getInvocationContext().setSession(sessionMap);
 
-		return proxy;
-	}
+        return proxy;
+    }
 
 }
