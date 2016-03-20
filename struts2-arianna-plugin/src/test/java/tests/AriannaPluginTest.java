@@ -2,22 +2,49 @@ package tests;
 
 import junit.framework.Assert;
 
-import org.softwareforge.struts2.breadcrumb.AriannaPlugin;
+import junit.framework.TestCase;
+import org.apache.struts2.StrutsTestCase;
+import xyz.timedrain.arianna.plugin.AriannaPlugin;
 
-public class AriannaPluginTest extends BreadcrumbTestCase {
+import java.io.File;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLClassLoader;
 
-	public void testPluginVersion() {
-		AriannaPlugin plugin = configuration.getContainer().getInstance(AriannaPlugin.class, "arianna");
+public class AriannaPluginTest extends StrutsTestCase {
 
-		Assert.assertNotNull("AriannaPlugin NOT FOUND", plugin);
 
-		int maxCrumbs = plugin.getDefaultMaxCrumbs();
-		// assertTrue(maxCrumbs == 6);
+//    public void testVersion() throws Exception {
+//        URI uri = new File("D:\\myprojects\\oss\\struts2-arianna-plugin\\struts2-arianna-plugin\\target\\struts2-arianna-plugin-REF1.jar").toURI();
+//
+//        URLClassLoader cl = new URLClassLoader(new URL[] {uri.toURL()});
+//
+//        Class<AriannaPlugin> aClass = (Class<AriannaPlugin>) cl.loadClass("xyz.timedrain.arianna.plugin.AriannaPlugin");
+//
+//        Package aPackage = aClass.getPackage();
+//
+//
+//        AriannaPlugin plugin = aClass.newInstance();
+//
+//        int maxCrumbs = plugin.getDefaultMaxCrumbs();
+//        assertTrue(maxCrumbs == 6);
+//
+//        String version = plugin.getVersion();
+//        Assert.assertNotNull(version);
+//    }
 
-		String version = plugin.getVersion();
-		String name = plugin.getTitle();
+    public void testPluginVersion() {
+        AriannaPlugin plugin = configuration.getContainer().getInstance(AriannaPlugin.class, "arianna");
 
-		// Assert.assertNotNull(version);
-		// Assert.assertNotNull(name);
-	}
+        Assert.assertNotNull("AriannaPlugin NOT FOUND", plugin);
+
+        int maxCrumbs = plugin.getDefaultMaxCrumbs();
+        // assertTrue(maxCrumbs == 6);
+
+        String version = plugin.getVersion();
+        String name = plugin.getTitle();
+
+        Assert.assertNotNull(version);
+        Assert.assertNotNull(name);
+    }
 }

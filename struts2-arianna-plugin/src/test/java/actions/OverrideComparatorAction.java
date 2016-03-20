@@ -1,6 +1,6 @@
 package actions;
 
-import org.softwareforge.struts2.breadcrumb.BreadCrumb;
+import xyz.timedrain.arianna.plugin.BreadCrumb;
 
 import comparators.TrueComparator;
 

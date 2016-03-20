@@ -14,10 +14,10 @@
 
 	<package name="test" extends="struts-default" namespace="/">
 		<interceptors>
-			<interceptor name="breadCrumbs" class="org.softwareforge.struts2.breadcrumb.BreadCrumbInterceptor">
+			<interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
 				<param name="trail.maxCrumbs">10</param>
 				<param name="trail.rewindMode">NEVER</param>
-				<param name="trail.comparator">org.softwareforge.struts2.breadcrumb.NameComparator</param>
+				<param name="trail.comparator">xyz.timedrain.arianna.plugin.NameComparator</param>
 			</interceptor>
 
 			<interceptor-stack name="testStack">

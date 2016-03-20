@@ -2,7 +2,7 @@ package tests;
 
 import java.util.HashMap;
 
-import org.softwareforge.struts2.breadcrumb.BreadCrumbTrail;
+import xyz.timedrain.arianna.plugin.BreadCrumbTrail;
 
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;

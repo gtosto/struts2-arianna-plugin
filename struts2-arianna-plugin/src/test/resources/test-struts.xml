@@ -16,9 +16,9 @@
 
 	<package name="advanced_tests" extends="struts-default" namespace="/AT">
 		<interceptors>
-			<interceptor name="breadCrumbs" class="org.softwareforge.struts2.breadcrumb.BreadCrumbInterceptor">
+			<interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
 				<param name="defaultRewindMode">NEVER</param>
-				<param name="defaultComparator">org.softwareforge.struts2.breadcrumb.NameComparator</param>
+				<param name="defaultComparator">xyz.timedrain.arianna.plugin.NameComparator</param>
 			</interceptor>
 
 			<interceptor-stack name="testStack">
@@ -33,9 +33,9 @@
 
 	<package name="test" extends="struts-default" namespace="/">
 		<interceptors>
-			<interceptor name="breadCrumbs" class="org.softwareforge.struts2.breadcrumb.BreadCrumbInterceptor">
+			<interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
 				<param name="defaultRewindMode">NEVER</param>
-				<param name="defaultComparator">org.softwareforge.struts2.breadcrumb.NameComparator</param>
+				<param name="defaultComparator">xyz.timedrain.arianna.plugin.NameComparator</param>
 			</interceptor>
 
 			<interceptor-stack name="testStack">
@@ -63,9 +63,9 @@
 
 	<package name="redefintions" extends="struts-default" namespace="/R">
 		<interceptors>
-			<interceptor name="breadCrumbs" class="org.softwareforge.struts2.breadcrumb.BreadCrumbInterceptor">
+			<interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
 				<param name="defaultRewindMode">NEVER</param>
-				<param name="defaultComparator">org.softwareforge.struts2.breadcrumb.NameComparator</param>
+				<param name="defaultComparator">xyz.timedrain.arianna.plugin.NameComparator</param>
 			</interceptor>
 
 			<interceptor-stack name="testStack">

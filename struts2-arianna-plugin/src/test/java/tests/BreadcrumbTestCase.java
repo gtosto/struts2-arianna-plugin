@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.StrutsTestCase;
-import org.softwareforge.struts2.breadcrumb.BreadCrumbInterceptor;
-import org.softwareforge.struts2.breadcrumb.BreadCrumbTrail;
+import xyz.timedrain.arianna.plugin.BreadCrumbInterceptor;
+import xyz.timedrain.arianna.plugin.BreadCrumbTrail;
 
 import com.opensymphony.xwork2.ActionProxy;
 

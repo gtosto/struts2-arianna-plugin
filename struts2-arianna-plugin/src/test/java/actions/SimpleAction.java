@@ -1,12 +1,12 @@
 package actions;
 
-import org.softwareforge.struts2.breadcrumb.BreadCrumb;
+import xyz.timedrain.arianna.plugin.BreadCrumb;
 
 @BreadCrumb("simple")
 public class SimpleAction {
 
 	public String execute() throws Exception {
-		System.out.printf("executing action: ", SimpleAction.class.getName());
+		System.out.printf("executing action: %s", SimpleAction.class.getName());
 		return null;
 	}
 

@@ -2,7 +2,7 @@ package comparators;
 
 import java.util.Comparator;
 
-import org.softwareforge.struts2.breadcrumb.Crumb;
+import xyz.timedrain.arianna.plugin.Crumb;
 
 public class TrueComparator implements Comparator<Crumb> {
 
