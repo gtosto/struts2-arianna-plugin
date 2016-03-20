@@ -9,7 +9,7 @@
         </layout>
     </appender>
         
-    <logger name="org.softwareforge.struts2.breadcrumb">
+    <logger name="xyz.timedrain.arianna">
         <level value="INFO"/>
     </logger>
     

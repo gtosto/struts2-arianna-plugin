@@ -17,9 +17,9 @@
     
     <package name="tests" namespace="/tests" extends="struts-default">
         <interceptors>  
-            <interceptor name="breadCrumbs" class="org.softwareforge.struts2.breadcrumb.BreadCrumbInterceptor">
+            <interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
                 <param name="defaultRewindMode">AUTO</param>
-                <param name="defaultComparator">org.softwareforge.struts2.breadcrumb.NameComparator</param>
+                <param name="defaultComparator">xyz.timedrain.arianna.plugin.NameComparator</param>
             </interceptor>
             
             <interceptor-stack name="testStack">
@@ -31,37 +31,37 @@
         <default-interceptor-ref name="testStack" />
 
 
-        <action name="home" class="org.softwareforge.struts2.breadcrumb.showcase.actions.HomeAction">
+        <action name="home" class="xyz.timedrain.arianna.showcase.actions.HomeAction">
             <result>home.jsp</result>
         </action>
         
-        <action name="pAction" class="org.softwareforge.struts2.breadcrumb.showcase.actions.ParameterizedAction">
+        <action name="pAction" class="xyz.timedrain.arianna.showcase.actions.ParameterizedAction">
             <result>result.jsp</result>
         </action>
                 
-        <action name="simple-*" class="org.softwareforge.struts2.breadcrumb.showcase.actions.SimpleActions" method="{1}">
+        <action name="simple-*" class="xyz.timedrain.arianna.showcase.actions.SimpleActions" method="{1}">
             <result>result.jsp</result>
         </action>
         
-        <action name="same-*" class="org.softwareforge.struts2.breadcrumb.showcase.actions.ActionsWithSameCrumbName" method="action_{1}">
+        <action name="same-*" class="xyz.timedrain.arianna.showcase.actions.ActionsWithSameCrumbName" method="action_{1}">
             <result>result.jsp</result>
         </action>
         
-        <action name="override-*" class="org.softwareforge.struts2.breadcrumb.showcase.actions.OverridingActions" method="use{1}">
+        <action name="override-*" class="xyz.timedrain.arianna.showcase.actions.OverridingActions" method="use{1}">
             <result>result.jsp</result>
         </action>
         
-        <action name="ognl-name" class="org.softwareforge.struts2.breadcrumb.showcase.actions.OgnlNameAction">
+        <action name="ognl-name" class="xyz.timedrain.arianna.showcase.actions.OgnlNameAction">
             <result name="input">input.jsp</result>
             <result>result.jsp</result>
         </action>
         
-        <action name="ognl-reverse" class="org.softwareforge.struts2.breadcrumb.showcase.actions.OgnlAfterInvocationAction">
+        <action name="ognl-reverse" class="xyz.timedrain.arianna.showcase.actions.OgnlAfterInvocationAction">
             <result name="input">home.jsp</result>
             <result>result.jsp</result>
         </action>
         
-        <action name="control-*" class="org.softwareforge.struts2.breadcrumb.showcase.actions.Controls" method="{1}">
+        <action name="control-*" class="xyz.timedrain.arianna.showcase.actions.Controls" method="{1}">
             <result name="input">home.jsp</result>
             <result type='redirect'>home.do</result>
         </action>
