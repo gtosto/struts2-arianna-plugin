@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.validator.annotations.ExpressionValidator;
 
 import xyz.timedrain.arianna.plugin.*;
 
-public class Controls extends ActionSupport implements SessionAware {
+public class Controls extends ShowcaseAction implements SessionAware {
     private static final long serialVersionUID = 1L;
 
     static final Log LOG = LogFactory.getLog(Controls.class);
@@ -66,7 +66,7 @@ public class Controls extends ActionSupport implements SessionAware {
             addActionMessage("Breadcrumb has been reconfigured");
             
             /*
-             * Fix some some strange replication issue when running on 
+             * Fix some strange replication issue when running on
              * google GAE infrastructure.
              */
             session.put(BreadCrumbInterceptor.CRUMB_KEY, breadCrumbTrail);
@@ -124,7 +124,7 @@ public class Controls extends ActionSupport implements SessionAware {
     /**
      * lookup the BreadCrumbInterceptor
      *
-     * @return
+     * @return the BreadCrumbInterceptor or <code>null</code> if not found
      */
     protected BreadCrumbInterceptor getBreadCrumbInterceptor() {
 
@@ -188,7 +188,7 @@ public class Controls extends ActionSupport implements SessionAware {
 
     @ExpressionValidator(
             expression = "maxCrumbs > 0 and maxCrumbs < 20",
-            message = "Sorry, in this application, maxCrumbs must be between 1 and 20")
+            message = "Sorry, in this showcase application, maxCrumbs must be between 1 and 20")
     public Integer getMaxCrumbs() {
         return maxCrumbs;
     }

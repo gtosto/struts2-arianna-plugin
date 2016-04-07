@@ -1,0 +1,59 @@
+ 
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+    <package name="simple" namespace="/tests" extends="struts-default">
+        <interceptors>  
+            <interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
+                <param name="defaultRewindMode">AUTO</param>
+                <param name="defaultComparator">xyz.timedrain.arianna.plugin.NameComparator</param>
+            </interceptor>
+            
+            <interceptor-stack name="testStack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="breadCrumbs" />
+             </interceptor-stack>
+        </interceptors>
+                    
+        <default-interceptor-ref name="testStack" />
+
+
+        <action name="home" class="xyz.timedrain.arianna.showcase.actions.HomeAction">
+            <result>home.jsp</result>
+        </action>
+        
+        <action name="pAction" class="xyz.timedrain.arianna.showcase.actions.ParameterizedAction">
+            <result>/simple/result.jsp</result>
+        </action>
+                
+        <action name="simple-*" class="xyz.timedrain.arianna.showcase.actions.SimpleActions" method="{1}">
+            <result>/simple/result.jsp</result>
+        </action>
+        
+        <action name="same-*" class="xyz.timedrain.arianna.showcase.actions.ActionsWithSameCrumbName" method="action_{1}">
+            <result>/simple/result.jsp</result>
+        </action>
+        
+        <action name="override-*" class="xyz.timedrain.arianna.showcase.actions.OverridingActions" method="use{1}">
+            <result>/simple/result.jsp</result>
+        </action>
+        
+        <action name="ognl-name" class="xyz.timedrain.arianna.showcase.actions.OgnlNameAction">
+            <result name="input">input.jsp</result>
+            <result>/simple/result.jsp</result>
+        </action>
+        
+        <action name="ognl-reverse" class="xyz.timedrain.arianna.showcase.actions.OgnlAfterInvocationAction">
+            <result name="input">home.jsp</result>
+            <result>/simple/result.jsp</result>
+        </action>
+        
+        <action name="control-*" class="xyz.timedrain.arianna.showcase.actions.Controls" method="{1}">
+            <result name="input">home.jsp</result>
+            <result type='redirect'>home.do</result>
+        </action>
+                
+    </package>  
+</struts>
