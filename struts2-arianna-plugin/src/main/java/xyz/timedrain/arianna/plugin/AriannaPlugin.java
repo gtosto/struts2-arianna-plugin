@@ -35,24 +35,22 @@ public class AriannaPlugin {
     private static final Log LOG = LogFactory.getLog(BreadCrumbInterceptor.class);
 
     int maxCrumbs = 6;
-
-    String  specificationTitle = "";
-    String  specificationVersion = "";
+    private Version version;
 
     public AriannaPlugin() {
         LOG.info("Initializing Arianna Plugin : " + this);
 
-        // load plugin version from pom file,
-        // for some reason, the API Package doesn't seem work to me
-        try {
-            Properties p = new Properties();
-            InputStream is = getClass().getResourceAsStream("/META-INF/MANIFEST.MF");
-            p.load(is);
-            specificationVersion = p.getProperty("Specification-Version");
-            specificationTitle = p.getProperty("Specification-Title");
-        } catch (Exception e) {
-            LOG.warn("Unable to set plugin's version infos (reason: " + e.getMessage() + ")");
-        }
+//        // load plugin version from pom file,
+//        // for some reason, the API Package doesn't seem work to me
+//        try {
+//            Properties p = new Properties();
+//            InputStream is = getClass().getResourceAsStream("/META-INF/MANIFEST.MF");
+//            p.load(is);
+//            specificationVersion = p.getProperty("Specification-Version");
+//            specificationTitle = p.getProperty("Specification-Title");
+//        } catch (Exception e) {
+//            LOG.warn("Unable to set plugin's version infos (reason: " + e.getMessage() + ")");
+//        }
     }
 
     public static void main(String[] args) {
@@ -68,13 +66,11 @@ public class AriannaPlugin {
     }
 
     public String getVersion() {
-//        return getClass().getPackage().getSpecificationVersion();
-        return specificationVersion;
+        return version.VERSION;
     }
 
     public String getTitle() {
-//        return getClass().getPackage().getSpecificationTitle();
-        return specificationTitle;
+        return version.ARTIFACT_ID;
     }
 
     public int getDefaultMaxCrumbs() {

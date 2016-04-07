@@ -76,7 +76,7 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
         this.defaultComparator = comparator;
     }
 
-    @Inject("arianna")
+    @Inject("ariannaPlugin")
     AriannaPlugin plugin;
 
     @Deprecated

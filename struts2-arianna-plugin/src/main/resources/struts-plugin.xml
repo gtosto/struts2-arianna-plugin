@@ -8,7 +8,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-    <bean name="arianna" class="xyz.timedrain.arianna.plugin.AriannaPlugin"/>
+    <bean name="ariannaPlugin" class="xyz.timedrain.arianna.plugin.AriannaPlugin" scope="singleton"/>
 
     <constant name="arianna:maxCrumbs" value="6"/>
 

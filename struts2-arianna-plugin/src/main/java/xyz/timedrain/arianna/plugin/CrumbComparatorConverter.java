@@ -40,7 +40,7 @@ import com.opensymphony.xwork2.inject.Inject;
 public class CrumbComparatorConverter extends StrutsTypeConverter {
     private final Log LOG = LogFactory.getLog(CrumbComparatorConverter.class);
 
-    @Inject("arianna")
+    @Inject("ariannaPlugin")
     AriannaPlugin plugin;
 
     public Object convertFromString(Map context, String[] values, Class toClass) {
