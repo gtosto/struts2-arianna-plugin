@@ -14,7 +14,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-</head>
+    <jsp:include page='inc/head.jsp'/>
 <body>
 
 
@@ -27,13 +27,14 @@
 </div>
 <div id="col2">
     <div id='wrp'>
+       <jsp:include page='inc/test-cases.jsp'/>
     </div>
 </div>
 
 <!-- === Column 1 (center)======================================================================================-->
 <div id="col1">
     <sj:div id="action_result" onSuccessTopics='/arianna /success/effect'>
-        <jsp:include page='body'/>
+        <jsp:include page='body.jsp'/>
     </sj:div>
 </div>
 

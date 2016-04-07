@@ -4,7 +4,7 @@
  
 <struts>
 
-    <package name="simple" namespace="/tests" extends="struts-default">
+    <package name="simple" namespace="/simple" extends="struts-default">
         <interceptors>  
             <interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
                 <param name="defaultRewindMode">AUTO</param>
@@ -21,7 +21,7 @@
 
 
         <action name="home" class="xyz.timedrain.arianna.showcase.actions.HomeAction">
-            <result>home.jsp</result>
+            <result>/simple/home.jsp</result>
         </action>
         
         <action name="pAction" class="xyz.timedrain.arianna.showcase.actions.ParameterizedAction">

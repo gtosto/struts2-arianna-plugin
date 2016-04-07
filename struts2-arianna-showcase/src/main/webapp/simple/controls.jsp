@@ -17,7 +17,7 @@
 </div>
 
 <s:form id='config' action="control-reconfigure">
-    <s:textfield name='maxCrumbs' label="Max crumbs" value="#trail.maxCrumbs" maxlength="3" size="3"/>
+    <s:textfield name='maxCrumbs' label="Max crumbs" value="%{#trail.maxCrumbs}" maxlength="3" size="3"/>
     <s:radio name='rewindMode'
         list='{"NEVER", "AUTO"}'
         label="Rewind mode" value="%{#control.rewindMode}"/>
