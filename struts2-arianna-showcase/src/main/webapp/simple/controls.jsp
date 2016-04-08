@@ -16,17 +16,23 @@
     <s:actionerror />
 </div>
 
+
 <s:form id='config' action="control-reconfigure">
-    <s:textfield name='maxCrumbs' label="Max crumbs" value="%{#trail.maxCrumbs}" maxlength="3" size="3"/>
+    <div>
+    <s:textfield name='maxCrumbs'
+            label="Max crumbs"
+            value="%{#session[@xyz.timedrain.arianna.plugin.BreadCrumbInterceptor@CRUMB_KEY].maxCrumbs}"
+            maxlength="3" size="3"/>
+
     <s:radio name='rewindMode'
-        list='{"NEVER", "AUTO"}'
-        label="Rewind mode" value="%{#control.rewindMode}"/>
+            list='{"NEVER", "AUTO"}'
+            label="Rewind mode" value="%{#control.rewindMode}"/>
 
     <s:select name="comparatorKey" value="%{#control.comparatorKey}"
-        label="Crumb comparator"
-        list="#control.allComparators"
-        listKey="key" listValue="key" />
-
+            label="Crumb comparator"
+            list="#control.allComparators"
+            listKey="key" listValue="key" />
+    </div>
     <div>
         <hr/>
         <sj:submit value='reconfigure' />
