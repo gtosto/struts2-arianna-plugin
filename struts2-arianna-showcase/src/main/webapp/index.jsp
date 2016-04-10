@@ -2,6 +2,6 @@
     
 <html>
     <head>
-        <meta http-equiv="Refresh" content="0; URL=${pageContext.servletContext.contextPath}/tests/home.do"/>
+        <meta http-equiv="Refresh" content="0; URL=${pageContext.servletContext.contextPath}/simple/home.do"/>
     </head>
 </html>
