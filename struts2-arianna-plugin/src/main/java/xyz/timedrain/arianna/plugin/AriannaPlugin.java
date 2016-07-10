@@ -16,14 +16,11 @@
 
 package xyz.timedrain.arianna.plugin;
 
-import java.io.InputStream;
 import java.util.Comparator;
-import java.util.Properties;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import com.opensymphony.xwork2.inject.Inject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The Arianna plugin struts2 bean.
@@ -32,7 +29,7 @@ import com.opensymphony.xwork2.inject.Inject;
  */
 public class AriannaPlugin {
 
-    private static final Log LOG = LogFactory.getLog(BreadCrumbInterceptor.class);
+    private static final Logger LOG = LogManager.getLogger(BreadCrumbInterceptor.class);
 
     int maxCrumbs = 6;
     private Version version;

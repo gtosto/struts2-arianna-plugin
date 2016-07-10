@@ -21,9 +21,6 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Stack;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.inject.Inject;
@@ -31,6 +28,8 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.PreResultListener;
 import com.opensymphony.xwork2.util.ValueStack;
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This is the interceptor that detects if we are executing an annotated action.
@@ -43,7 +42,7 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Log LOG = LogFactory.getLog(BreadCrumbInterceptor.class);
+    private static final Logger LOG = LogManager.getLogger(BreadCrumbInterceptor.class);
 
     private static final String TIMER_KEY = "BreadCrumbInterceptor: ";
 

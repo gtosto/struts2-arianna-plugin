@@ -18,15 +18,15 @@ package xyz.timedrain.arianna.plugin;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author Giovanni Tosto
  * @version $Id$
  */
 public class Utils {
-    static final Log LOG = LogFactory.getLog(Utils.class);
+    static final Logger LOG = LogManager.getLogger(Utils.class);
 
     /**
      * Find a method with no arguments with the name <var>name</var>.
