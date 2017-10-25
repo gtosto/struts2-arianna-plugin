@@ -4,14 +4,14 @@
     <parent>
         <groupId>xyz.timedrain.arianna</groupId>
         <artifactId>struts2-arianna-project</artifactId>
-        <version>REF1</version>
+        <version>REF-SNAPSHOT</version>
     </parent>
 
     <artifactId>struts2-arianna-showcase</artifactId>
     <packaging>war</packaging>
 
     <properties>
-        <struts2.jquery-plugin.version>2.5.3</struts2.jquery-plugin.version>
+        <struts2.jquery-plugin.version>4.0.2</struts2.jquery-plugin.version>
     </properties>
 
     <build>
@@ -38,6 +38,13 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.5.13</version>
+        </dependency>
+        
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
@@ -54,11 +61,8 @@
             <artifactId>struts2-jquery-plugin</artifactId>
             <version>${struts2.jquery-plugin.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>${struts2.version}</version>
-        </dependency>
+        
+
 
         <dependency>
             <groupId>javax.servlet</groupId>

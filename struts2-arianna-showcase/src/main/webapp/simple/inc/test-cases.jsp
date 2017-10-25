@@ -3,6 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%@ taglib prefix="bc" uri="/struts-arianna-tags"%>
@@ -31,9 +32,9 @@
             <p>
                 Here you can invoke the same action with different parameters values.<br/>
             </p>
-            <s:form action="pAction" theme='xhtml'>
+            <s:form action="pAction" theme='xhtml' id="pForm">
                 <s:select name='p' list="{'pippo','pluto','paperino','topolino','minnie'}" label="p parameter"/>
-                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight"/>
+                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight" formIds="pForm"/>
             </s:form>
             <p>
                 If you you are using the <code>RequestComparator</code> it will compares values and recognize

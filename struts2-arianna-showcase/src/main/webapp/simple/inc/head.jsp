@@ -6,7 +6,7 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%@ taglib prefix="bc" uri="/struts-arianna-tags"%>
 
-<s:set name="theme" value="'xhtml'" scope="page" />
+<s:set var="theme" value="'xhtml'" scope="page" />
 <c:set var='contextName' value='${pageContext.servletContext.contextPath}'/>
 
     <title>Struts2 - Arianna Plugin</title>
