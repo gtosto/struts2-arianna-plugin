@@ -43,9 +43,9 @@ public class AriannaPlugin {
     public AriannaPlugin() {
         LOG.info("Initializing Arianna Plugin {} ...",this);
 
-        // FIXME the package API seems work only when packaged in a jar/war archive 
+        // FIXME the package API seems to work only when packaged in a jar/war archive 
         packageInfo = getClass().getPackage();
-        LOG.info("{} : {}", getTitle(), getVersion());
+        LOG.info("Plugin Id is {} : {}", getTitle(), getVersion());
     }
     
     public static void main(String[] args) {
@@ -60,11 +60,11 @@ public class AriannaPlugin {
     }
 
     final public String getVersion() {
-        return "" + packageInfo.getImplementationVersion();
+        return packageInfo == null ? "unknown" : packageInfo.getImplementationVersion();
     }
 
     final public String getTitle() {
-        return "" + packageInfo.getImplementationTitle();
+        return packageInfo == null ? "unknown" : packageInfo.getImplementationTitle();
     }
 
     public int getDefaultMaxCrumbs() {
