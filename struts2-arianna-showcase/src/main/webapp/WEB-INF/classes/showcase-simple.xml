@@ -28,6 +28,10 @@
             <result>/simple/result.jsp</result>
         </action>
                 
+        <action name="eAction" class="xyz.timedrain.arianna.showcase.actions.ExcludeParamsAction"  method="discardQ">
+            <result>/simple/result.jsp</result>
+        </action>
+        
         <action name="simple-*" class="xyz.timedrain.arianna.showcase.actions.SimpleActions" method="{1}">
             <result>/simple/result.jsp</result>
         </action>

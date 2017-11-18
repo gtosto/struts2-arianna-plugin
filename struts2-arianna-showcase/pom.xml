@@ -29,6 +29,14 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.3.0.v20150612</version>
+                <configuration>
+                	<systemProperties>
+                		<systemProperty>
+                			<name>org.apache.logging.log4j.simplelog.StatusLogger.level</name>
+                			<value>TRACE</value>
+                		</systemProperty>
+                	</systemProperties>
+                </configuration>
             </plugin>
 
         </plugins>
@@ -42,7 +50,6 @@
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>2.5.13</version>
         </dependency>
         
         <dependency>

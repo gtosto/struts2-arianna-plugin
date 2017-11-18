@@ -3,12 +3,12 @@
     <groupId>xyz.timedrain.arianna</groupId>
     <artifactId>struts2-arianna-project</artifactId>
     <packaging>pom</packaging>
-    <version>REF-SNAPSHOT</version>
+    <version>MASTER-SNAPSHOT</version>
 
     <inceptionYear>2011</inceptionYear>
 
     <properties>
-        <struts2.version>2.5.2</struts2.version>
+        <struts2.version>2.5.13</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skipTests>true</skipTests>
     </properties>

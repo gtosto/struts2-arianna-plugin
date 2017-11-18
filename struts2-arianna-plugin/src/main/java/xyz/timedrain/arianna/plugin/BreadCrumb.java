@@ -51,6 +51,8 @@ public @interface BreadCrumb {
         }
     }
 
+    String[]	dropParams() default {};
+    
     // public String comparator() default "";
 
     // public String trail() default "main";

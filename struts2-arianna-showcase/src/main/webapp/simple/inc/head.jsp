@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="${contextName}/res/css/site.css"/>
 
 
-    <sj:head debug="false" jqueryui="true" jquerytheme="start" loadAtOnce='true'/>
+    <sj:head debug="false" jqueryui="true" jquerytheme="overcast" loadAtOnce='true' defaultIndicator="myDefaultIndicator"/>
 
     <!-- also include the jquery tools -->
     <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script>

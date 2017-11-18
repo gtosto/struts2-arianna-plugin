@@ -16,5 +16,6 @@
     <constant name="arianna:maxCrumbs" value="4"></constant>
     
     <include file="showcase-simple.xml"/>
+    <include file="showcase-tests.xml"/>
 
 </struts>
