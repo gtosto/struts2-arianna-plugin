@@ -4,7 +4,7 @@
     <parent>
         <groupId>xyz.timedrain.arianna</groupId>
         <artifactId>struts2-arianna-project</artifactId>
-        <version>REF-SNAPSHOT</version>
+        <version>MASTER-SNAPSHOT</version>
     </parent>
 
     <artifactId>struts2-arianna-plugin</artifactId>
@@ -48,21 +48,6 @@
 					</archive>
 				</configuration>
         	</plugin>
-<!--         	
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>templating-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <id>filter-src</id>
-                        <goals>
-                            <goal>filter-sources</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
- -->            
         </plugins>
     </build>
 

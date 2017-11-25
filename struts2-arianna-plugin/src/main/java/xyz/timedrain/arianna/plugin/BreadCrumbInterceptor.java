@@ -181,7 +181,7 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
     }
 
     private void doIntercept(ActionInvocation invocation, BreadCrumb annotation) {
-        UtilTimerStack.push(TIMER_KEY + "doIntercept");
+//        UtilTimerStack.push(TIMER_KEY + "doIntercept");
 
         if (annotation != null) {
 
@@ -244,13 +244,13 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
                 LOG.trace("releasing lock on crumbs");
             } // synchronized
         }
-        UtilTimerStack.pop(TIMER_KEY + "doIntercept");
+//        UtilTimerStack.pop(TIMER_KEY + "doIntercept");
     }
 
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     private static BreadCrumb processAnnotation(ActionInvocation invocation) {
-        UtilTimerStack.push(TIMER_KEY + "processAnnotation");
+//        UtilTimerStack.push(TIMER_KEY + "processAnnotation");
 
         Class aclass = invocation.getAction().getClass();
 
@@ -275,7 +275,7 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
             crumb = (BreadCrumb) aclass.getAnnotation(BreadCrumb.class);
         }
 
-        UtilTimerStack.pop(TIMER_KEY + "processAnnotation");
+//        UtilTimerStack.pop(TIMER_KEY + "processAnnotation");
 
         return crumb;
     }
