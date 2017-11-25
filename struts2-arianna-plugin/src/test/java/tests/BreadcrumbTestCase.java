@@ -19,6 +19,10 @@ public abstract class BreadcrumbTestCase extends StrutsTestCase {
         return (BreadCrumbTrail) object;
     }
 
+    protected void deleteBreadCrumnTrail() {
+    	sessionMap.remove(BreadCrumbInterceptor.CRUMB_KEY);
+    }
+    
     // ConfigurationProvider p = new StrutsXmlConfigurationProvider("pippo",
     // true, null);
 

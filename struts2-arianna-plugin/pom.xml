@@ -39,28 +39,15 @@
 							<manifestSection>
 								<name>xyz.timedrain.arianna.plugin</name>
 								<manifestEntries>
-									<Implementation-Version>III-${project.version}</Implementation-Version>
-									<Implementation-Title>III-${project.name}</Implementation-Title>
-									<Implementation-Vendor-Id>III-${project.groupId}</Implementation-Vendor-Id>
+									<Implementation-Version>${project.version}</Implementation-Version>
+									<Implementation-Title>${project.name}</Implementation-Title>
+									<Implementation-Vendor-Id>${project.groupId}</Implementation-Vendor-Id>
 								</manifestEntries>
 							</manifestSection>
 						</manifestSections>
 					</archive>
 				</configuration>
         	</plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>templating-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <id>filter-src</id>
-                        <goals>
-                            <goal>filter-sources</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -77,11 +64,12 @@
             <artifactId>log4j-api</artifactId>
         </dependency>
 
-        <!-- servlet and jsp API -->
+        <!-- servlet and jsp -->
+        
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.4</version>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -92,11 +80,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.struts</groupId>
