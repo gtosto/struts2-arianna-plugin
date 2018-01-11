@@ -5,8 +5,9 @@
     version: $Id$
 -->
 <!DOCTYPE struts PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
-        "http://struts.apache.org/dtds/struts-2.5.dtd">
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
 <struts>
     <bean name="ariannaPlugin" class="xyz.timedrain.arianna.plugin.AriannaPlugin" scope="singleton"/>
 

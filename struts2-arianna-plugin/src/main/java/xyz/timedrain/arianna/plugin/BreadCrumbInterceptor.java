@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.regex.Pattern;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.inject.Inject;
@@ -307,7 +308,7 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
 	protected static Map<String, String[]> handleActionParameters(ActionInvocation invocation, BreadCrumb annotation) {
 
 
-    	Object obj = invocation.getInvocationContext().getParameters();
+    	Object obj = invocation.getInvocationContext().get(ActionContext.PARAMETERS);
     	
     	    	
     	if ( "org.apache.struts2.dispatcher.HttpParameters".equals(obj.getClass().getName()) ) {
@@ -323,9 +324,9 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
     		}
     		return result;
     	} 
-//    	else if ( obj instanceof Map<?,?>) {
-//    		return (Map<String, String[]>) obj;
-//    	} 
+    	else if ( obj instanceof Map<?,?>) {
+    		return (Map<String, String[]>) obj;
+    	} 
     	else  {
     		LOG.error("Cannot handle parameters for action", invocation.getInvocationContext().getName());
     		return null;
