@@ -15,10 +15,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <jsp:include page='inc/head.jsp'/>
+    
 <body>
 
 
 <div id="header">
+	<img id="myDefaultIndicator" src="images/ajax-loader.gif" alt="Loading..." style="display:none"/>
     <jsp:include page='inc/header.jsp'/>
 </div>
 

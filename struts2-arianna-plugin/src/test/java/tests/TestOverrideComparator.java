@@ -11,7 +11,7 @@ public class TestOverrideComparator extends BreadcrumbTestCase {
 
     @Override
     protected void setUp() throws Exception {
-        UtilTimerStack.setActive(true);
+//        UtilTimerStack.setActive(true);
         System.setProperty("xwork.profile.activate", "true");
         // TODO Auto-generated method stub
         super.setUp();

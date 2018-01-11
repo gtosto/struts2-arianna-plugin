@@ -48,7 +48,7 @@
             <a href="#">view action code</a>
         </h5>
         <pre id="source" class='source' style='display:none'>
-            <code class='java'><s:property value="source" escape="true"/></code>
+            <code class='java'><s:property value="source" escapeHtml="true"/></code>
         </pre>
     </div>
 

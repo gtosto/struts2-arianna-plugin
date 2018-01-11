@@ -18,19 +18,24 @@ package xyz.timedrain.arianna.plugin;
 import java.lang.reflect.Method;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import java.util.regex.Pattern;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.inject.Inject;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.PreResultListener;
+import com.opensymphony.xwork2.security.DefaultExcludedPatternsChecker;
 import com.opensymphony.xwork2.util.ValueStack;
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.struts2.dispatcher.HttpParameters;
+import org.apache.struts2.dispatcher.Parameter;
 
 /**
  * This is the interceptor that detects if we are executing an annotated action.
@@ -43,7 +48,7 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Log LOG = LogFactory.getLog(BreadCrumbInterceptor.class);
+    private static final Logger LOG = LogManager.getLogger(BreadCrumbInterceptor.class);
 
     private static final String TIMER_KEY = "BreadCrumbInterceptor: ";
 
@@ -177,11 +182,11 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
     }
 
     private void doIntercept(ActionInvocation invocation, BreadCrumb annotation) {
-        UtilTimerStack.push(TIMER_KEY + "doIntercept");
+//        UtilTimerStack.push(TIMER_KEY + "doIntercept");
 
         if (annotation != null) {
 
-            Crumb current = makeCrumb(invocation, annotation.value());
+            Crumb current = makeCrumb(invocation, annotation);
 
             // get the bread crumbs trail
             BreadCrumbTrail trail = getBreadCrumbTrail(invocation);
@@ -240,25 +245,13 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
                 LOG.trace("releasing lock on crumbs");
             } // synchronized
         }
-        UtilTimerStack.pop(TIMER_KEY + "doIntercept");
+//        UtilTimerStack.pop(TIMER_KEY + "doIntercept");
     }
 
-//	private Comparator<Crumb> lookupComparator(Class clazz) {
-//		try {
-//			Comparator instance = (Comparator) clazz.newInstance();
-//			return instance;
-//		} catch (InstantiationException e) {
-//			LOG.error("Cannot create comparator of class " + clazz, e);
-//		} catch (IllegalAccessException e) {
-//			LOG.error("Cannot create comparator of class " + clazz, e);
-//		}
-//		return null;
-//
-//	}
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     private static BreadCrumb processAnnotation(ActionInvocation invocation) {
-        UtilTimerStack.push(TIMER_KEY + "processAnnotation");
+//        UtilTimerStack.push(TIMER_KEY + "processAnnotation");
 
         Class aclass = invocation.getAction().getClass();
 
@@ -283,14 +276,15 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
             crumb = (BreadCrumb) aclass.getAnnotation(BreadCrumb.class);
         }
 
-        UtilTimerStack.pop(TIMER_KEY + "processAnnotation");
+//        UtilTimerStack.pop(TIMER_KEY + "processAnnotation");
 
         return crumb;
     }
 
-    private static Crumb makeCrumb(ActionInvocation invocation, String name) {
+    private static Crumb makeCrumb(ActionInvocation invocation, BreadCrumb annotation) {
         ActionProxy proxy = invocation.getProxy();
-
+        String name = annotation.value();
+        		
         Crumb c = new Crumb();
         c.timestamp = new Date();
         c.namespace = proxy.getNamespace();
@@ -305,12 +299,49 @@ public class BreadCrumbInterceptor extends AbstractInterceptor {
         }
         c.name = name;
 
-        // store request parameters
-        c.params = invocation.getInvocationContext().getParameters();
+        // always store request parameters        
+        c.params = handleActionParameters(invocation, annotation);
 
         return c;
     }
 
+	protected static Map<String, String[]> handleActionParameters(ActionInvocation invocation, BreadCrumb annotation) {
+
+
+    	Object obj = invocation.getInvocationContext().get(ActionContext.PARAMETERS);
+    	
+    	    	
+    	if ( "org.apache.struts2.dispatcher.HttpParameters".equals(obj.getClass().getName()) ) {
+    		// starting from ^2.5.3 struts use HttpParameters 
+    		HttpParameters parameters = (HttpParameters) obj;
+    		Map<String, String[]> result = new HashMap(parameters.size());
+    		for (Map.Entry<String, Parameter> entry : parameters.entrySet()) 
+    		{
+    			String key = entry.getKey();
+    			if ( matches(key, annotation.dropParams() ) )
+    				continue;    			
+   				result.put(key, entry.getValue().getMultipleValues());
+    		}
+    		return result;
+    	} 
+    	else if ( obj instanceof Map<?,?>) {
+    		return (Map<String, String[]>) obj;
+    	} 
+    	else  {
+    		LOG.error("Cannot handle parameters for action", invocation.getInvocationContext().getName());
+    		return null;
+    	}
+    }
+    
+	private static boolean matches(String input, String[] patterns) {
+		for ( String regex : patterns ) {
+			if ( Pattern.matches(regex, input) ) 
+				return true;
+		}
+		
+		return false;
+	}
+	
     /**
      * Interface to allow interceptor configuration using the legacy syntax
      *

@@ -11,13 +11,34 @@ public class TestSimpleAction extends BreadcrumbTestCase {
 
     @Override
     protected void setUp() throws Exception {
-        UtilTimerStack.setActive(true);
+//        UtilTimerStack.setActive(true);
         System.setProperty("xwork.profile.activate", "true");
         // TODO Auto-generated method stub
         super.setUp();
     }
 
-    public void testSimpleAction() throws Exception {
+
+//    public void testSimpleAction() throws Exception {
+//
+//        sessionMap = new HashMap();
+//
+//        ActionProxy proxy = getActionProxy("/c-SimpleAction.do");
+//
+//        String rc = proxy.execute();
+//
+//        BreadCrumbTrail breadCrumbTrail = getBreadCrumbTrail(sessionMap);
+//
+//        /*
+//         * assert that a breadcrumb trail has been stored and that it contains
+//         * at least a crumb
+//         */
+//        assertNotNull("No breadcrumb trail in session", breadCrumbTrail);
+//        assertTrue(breadCrumbTrail.getCrumbs().size() > 0);
+//
+//        System.out.printf("crumbs: %s", breadCrumbTrail.getCrumbs());
+//    }
+
+    public void testCrumbParams() throws Exception {
 
         sessionMap = new HashMap();
 
@@ -32,12 +53,14 @@ public class TestSimpleAction extends BreadcrumbTestCase {
          * at least a crumb
          */
         assertNotNull("No breadcrumb trail in session", breadCrumbTrail);
-        assertTrue(breadCrumbTrail.getCrumbs().size() > 0);
+        assertTrue(breadCrumbTrail.getCrumbs().size() == 1);
 
         System.out.printf("crumbs: %s", breadCrumbTrail.getCrumbs());
     }
-
+    
     public void testConfiguration() throws Exception {
 
     }
+    
+   
 }

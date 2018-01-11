@@ -2,6 +2,7 @@ package actions;
 
 import xyz.timedrain.arianna.plugin.BreadCrumb;
 
+
 @BreadCrumb("simple")
 public class SimpleAction {
 

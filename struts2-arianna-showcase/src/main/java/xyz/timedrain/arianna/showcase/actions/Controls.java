@@ -4,13 +4,12 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
 import com.opensymphony.xwork2.config.entities.InterceptorMapping;
 import com.opensymphony.xwork2.interceptor.Interceptor;
@@ -21,7 +20,7 @@ import xyz.timedrain.arianna.plugin.*;
 public class Controls extends ShowcaseAction implements SessionAware {
     private static final long serialVersionUID = 1L;
 
-    static final Log LOG = LogFactory.getLog(Controls.class);
+    static final Logger LOG = LogManager.getLogger(Controls.class);
 
     private Map<String, Object> session;
 

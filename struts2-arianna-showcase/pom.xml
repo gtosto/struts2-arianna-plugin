@@ -4,14 +4,14 @@
     <parent>
         <groupId>xyz.timedrain.arianna</groupId>
         <artifactId>struts2-arianna-project</artifactId>
-        <version>REF1</version>
+        <version>0.7-beta.1</version>
     </parent>
 
     <artifactId>struts2-arianna-showcase</artifactId>
     <packaging>war</packaging>
 
     <properties>
-        <struts2.jquery-plugin.version>2.5.3</struts2.jquery-plugin.version>
+        <struts2.jquery-plugin.version>4.0.2</struts2.jquery-plugin.version>
     </properties>
 
     <build>
@@ -29,26 +29,33 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.3.0.v20150612</version>
+                <configuration>
+                	<systemProperties>
+                		<systemProperty>
+                			<name>org.apache.logging.log4j.simplelog.StatusLogger.level</name>
+                			<value>TRACE</value>
+                		</systemProperty>
+                	</systemProperties>
+                </configuration>
             </plugin>
 
         </plugins>
     </build>
     <dependencies>
         <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <optional>false</optional>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.1</version>
         </dependency>
 
         <dependency>
@@ -61,11 +68,8 @@
             <artifactId>struts2-jquery-plugin</artifactId>
             <version>${struts2.jquery-plugin.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>${struts2.version}</version>
-        </dependency>
+        
+
 
         <dependency>
             <groupId>javax.servlet</groupId>

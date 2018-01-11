@@ -1,0 +1,39 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <package name="tests" namespace="/tests" extends="struts-default" strict-method-invocation="false">
+    
+    	
+        <interceptors>  
+            <interceptor name="breadCrumbs" class="xyz.timedrain.arianna.plugin.BreadCrumbInterceptor">
+                <param name="defaultRewindMode">AUTO</param>
+                <param name="defaultComparator">xyz.timedrain.arianna.plugin.NameComparator</param>
+            </interceptor>
+            
+            <interceptor-stack name="testStack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="breadCrumbs" />
+             </interceptor-stack>
+        </interceptors>
+                    
+        <default-interceptor-ref name="testStack" />
+
+    	<default-class-ref class="xyz.timedrain.arianna.showcase.actions.tests.TestAction"/>
+    	
+        <action name="p-*" class='xyz.timedrain.arianna.showcase.actions.tests.TestExcludeParamAction'>
+        	<result>/tests/{1}.jsp</result>
+        </action>
+
+        <action name="a-*">
+            <result>/tests/{1}.jsp</result>
+        </action>
+        
+        <action name="*">
+            <result>/tests/default.jsp</result>
+        </action>
+                
+    </package>  
+</struts>

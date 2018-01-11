@@ -3,6 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%@ taglib prefix="bc" uri="/struts-arianna-tags"%>
@@ -26,19 +27,66 @@
             </ul>
         </div>
 
+        <h3><a href='#'>Breadcrumb's' name as OGNL expression</a></h3>
+        <div class='case'>
+            <p>
+                clicking <i>execute</i> invokes an action annotated with
+                <pre class='code'><code class='java'>@Breadcrumb("%{name}")</code></pre>
+                as a result the typed text will be used as the bread crumb name.
+            </p>
+            <s:form id='ognl1' action="ognl-name">
+                <s:textfield name='name' label="name" required="true"></s:textfield>
+                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight" formIds="ognl1"/>
+            </s:form>
+            <hr/>
+            <p>
+                clicking <i>execute</i> invokes an action annotated with
+                <pre class='code'><code class='java'>@BreadCrumb(value="%{name}",afterAction=true)</code></pre>
+                as a result the %{name} expression will be evaluated <u>after</u> the action's execution, giving
+                it a chance to compute the expression.<br/>
+                In this example the action just reverse the typed text.
+            </p>
+            <s:form id='ognl2' action="ognl-reverse">
+                <s:textfield name='name' label="name" required="true" value="hello"></s:textfield>
+                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight"  formIds="ognl2"/>
+            </s:form>
+
+        </div>
+
         <h3><a href='#'>Action with different parameter value</a></h3>
         <div class='case'>
             <p>
                 Here you can invoke the same action with different parameters values.<br/>
             </p>
-            <s:form action="pAction" theme='xhtml'>
+            <s:form action="pAction" theme='xhtml' id="pForm">
                 <s:select name='p' list="{'pippo','pluto','paperino','topolino','minnie'}" label="p parameter"/>
-                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight"/>
+                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight" formIds="pForm"/>
             </s:form>
             <p>
                 If you you are using the <code>RequestComparator</code> it will compares values and recognize
-                the actions inequalities.
+                the request inequalities producing different crumbs.
             </p>
+        </div>
+
+        <h3><a href='#'>Breadcrumb's' excluding some parameters</a></h3>
+        <div class='case'>
+            <p>
+                Sometimes you would avoid some parameters to be kept into the crumbs for examples because 
+                they are useless for a request replay or to avoid memory consumption.<br/>
+            </p>
+        	
+        		<s:form action='eAction'>        		
+        			<s:textfield name='qui' label='qui' value="I am Qui" readonly="true"/>
+        			<s:textfield name='quo' label='quo' value="I am Quo" readonly="true"/>
+        			<s:textfield name='qua' label='qua' value="I am Qua" readonly="true"/>
+a        			<s:textfield name='tip' label='tip' value="I am Tip" readonly="true"/>
+        			<s:textfield name='tap' label='tap' value="I am Tap" readonly="true"/>
+        			
+        			<s:textfield name='api' label='api' value="I am apia" readonly="true"/>
+        			
+                	<sj:submit value="discardQ" onSuccessTopics="/arianna" targets="action_result" effect="highlight" />
+        		</s:form>
+        	<p/>
         </div>
 
         <h3><a href='#'>Different actions with equals  annotation</a></h3>
@@ -77,32 +125,8 @@
             </ul>
         </div>
 
-        <h3><a href='#'>Breadcrumb's' name as OGNL expression</a></h3>
-        <div class='case'>
-            <p>
-                clicking <i>execute</i> invokes an action annotated with
-                <pre class='code'><code class='java'>@Breadcrumb("%{name}")</code></pre>
-                as a result the typed text will be used as the bread crumb name.
-            </p>
-            <s:form id='ognl1' action="ognl-name">
-                <s:textfield name='name' label="name" required="true"></s:textfield>
-                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight" formIds="ognl1"/>
-            </s:form>
-            <hr/>
-            <p>
-                clicking <i>execute</i> invokes an action annotated with
-                <pre class='code'><code class='java'>@BreadCrumb(value="%{name}",afterAction=true)</code></pre>
-                as a result the %{name} expression will be evaluated <u>after</u> the action's execution, giving
-                it a chance to compute the expression.<br/>
-                In this example the action just reverse the typed text.
-            </p>
-            <s:form id='ognl2' action="ognl-reverse">
-                <s:textfield name='name' label="name" required="true" value="hello"></s:textfield>
-                <sj:submit value="execute" onSuccessTopics="/arianna" targets="action_result" effect="highlight"  formIds="ognl2"/>
-            </s:form>
 
-        </div>
-
+        
         <h3><a href='#'>Actions overriding the default behaviour</a></h3>
         <div class='case'>
             <p>Whathever the breadcrumb trail configuration is, it can be overriden

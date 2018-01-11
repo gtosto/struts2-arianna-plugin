@@ -16,14 +16,15 @@
 
 package xyz.timedrain.arianna.plugin;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Comparator;
 import java.util.Properties;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.jar.Manifest;
 
 import com.opensymphony.xwork2.inject.Inject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The Arianna plugin struts2 bean.
@@ -32,32 +33,25 @@ import com.opensymphony.xwork2.inject.Inject;
  */
 public class AriannaPlugin {
 
-    private static final Log LOG = LogFactory.getLog(BreadCrumbInterceptor.class);
+    private static final Logger LOG = LogManager.getLogger(BreadCrumbInterceptor.class);
 
     int maxCrumbs = 6;
-    private Version version;
 
+	Properties p = new Properties();
+	Package packageInfo;
+    
     public AriannaPlugin() {
-        LOG.info("Initializing Arianna Plugin : " + this);
+        LOG.info("Initializing Arianna Plugin {} ...",this);
 
-//        // load plugin version from pom file,
-//        // for some reason, the API Package doesn't seem work to me
-//        try {
-//            Properties p = new Properties();
-//            InputStream is = getClass().getResourceAsStream("/META-INF/MANIFEST.MF");
-//            p.load(is);
-//            specificationVersion = p.getProperty("Specification-Version");
-//            specificationTitle = p.getProperty("Specification-Title");
-//        } catch (Exception e) {
-//            LOG.warn("Unable to set plugin's version infos (reason: " + e.getMessage() + ")");
-//        }
+        // FIXME the package API seems to work only when packaged in a jar/war archive 
+        packageInfo = getClass().getPackage();
+        LOG.info("Plugin Id is {} : {}", getTitle(), getVersion());
     }
-
+    
     public static void main(String[] args) {
         System.out.println("This is the Struts2 Arianna Plugin");
         AriannaPlugin plugin = new AriannaPlugin();
-        String version = plugin.getVersion();
-        System.out.println("Version: " + version);
+        System.out.println("Package Info = " + plugin.getTitle() + " " + plugin.getVersion());
     }
 
     @Inject("arianna:maxCrumbs")
@@ -65,12 +59,12 @@ public class AriannaPlugin {
         maxCrumbs = Integer.parseInt(v);
     }
 
-    public String getVersion() {
-        return version.VERSION;
+    final public String getVersion() {
+        return packageInfo == null ? "unknown" : packageInfo.getImplementationVersion();
     }
 
-    public String getTitle() {
-        return version.ARTIFACT_ID;
+    final public String getTitle() {
+        return packageInfo == null ? "unknown" : packageInfo.getImplementationTitle();
     }
 
     public int getDefaultMaxCrumbs() {
@@ -119,4 +113,6 @@ public class AriannaPlugin {
             return null;
         }
     }
+    
+    
 }

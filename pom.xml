@@ -3,12 +3,12 @@
     <groupId>xyz.timedrain.arianna</groupId>
     <artifactId>struts2-arianna-project</artifactId>
     <packaging>pom</packaging>
-    <version>REF1</version>
+    <version>0.7-beta.1</version>
 
     <inceptionYear>2011</inceptionYear>
 
     <properties>
-        <struts2.version>2.2.1.1</struts2.version>
+        <struts2.version>2.5.13</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skipTests>true</skipTests>
     </properties>
@@ -36,6 +36,7 @@
     <modules>
         <module>struts2-arianna-plugin</module>
         <module>struts2-arianna-showcase</module>
+        <!-- module>struts2-arianna-test</module -->
     </modules>
 
     <!-- common dependency management -->
@@ -49,11 +50,17 @@
             </dependency>
 
             <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>1.1.1</version>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.8.2</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>2.8.2</version>
+            </dependency>
+            
             <dependency>
                 <groupId>org.apache.struts</groupId>
                 <artifactId>struts2-junit-plugin</artifactId>
@@ -61,12 +68,14 @@
                 <scope>test</scope>
             </dependency>
 
+<!-- 
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>3.8.2</version>
                 <scope>test</scope>
             </dependency>
+ -->            
         </dependencies>
 
     </dependencyManagement>
@@ -79,8 +88,8 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <source>1.5</source>
-                        <target>1.5</target>
+                        <source>1.6</source>
+                        <target>1.6</target>
                     </configuration>
                 </plugin>
 
@@ -101,12 +110,12 @@
                         </archive>
                     </configuration>
                 </plugin>
-
+<!-- 
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>2.6</version>                    
                 </plugin>
-
+ -->
             </plugins>
         </pluginManagement>
     </build>
@@ -123,14 +132,6 @@
                     </plugin>
                 </plugins>
             </build>
-
-            <distributionManagement>
-                <repository>
-                    <id>gundam</id>
-                    <url>file:///E:\repos\m3\gundam</url>
-                </repository>
-            </distributionManagement>
-
         </profile>
     </profiles>
 </project>

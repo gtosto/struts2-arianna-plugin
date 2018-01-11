@@ -6,7 +6,7 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%@ taglib prefix="bc" uri="/struts-arianna-tags"%>
 
-<s:set name="theme" value="'xhtml'" scope="page" />
+<s:set var="theme" value="'xhtml'" scope="page" />
 <c:set var='contextName' value='${pageContext.servletContext.contextPath}'/>
 
     <title>Struts2 - Arianna Plugin</title>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="${contextName}/res/css/site.css"/>
 
 
-    <sj:head debug="false" jqueryui="true" jquerytheme="start" loadAtOnce='true'/>
+    <sj:head debug="false" jqueryui="true" jquerytheme="overcast" loadAtOnce='true' defaultIndicator="myDefaultIndicator"/>
 
     <!-- also include the jquery tools -->
     <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script>

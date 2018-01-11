@@ -18,8 +18,8 @@ package xyz.timedrain.arianna.plugin;
 import java.util.Comparator;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.util.StrutsTypeConverter;
 
 import com.opensymphony.xwork2.conversion.TypeConversionException;
@@ -38,7 +38,7 @@ import com.opensymphony.xwork2.inject.Inject;
  */
 @SuppressWarnings("rawtypes")
 public class CrumbComparatorConverter extends StrutsTypeConverter {
-    private final Log LOG = LogFactory.getLog(CrumbComparatorConverter.class);
+    private final Logger LOG = LogManager.getLogger(CrumbComparatorConverter.class);
 
     @Inject("ariannaPlugin")
     AriannaPlugin plugin;
