@@ -3,7 +3,7 @@
     <groupId>xyz.timedrain.arianna</groupId>
     <artifactId>struts2-arianna-project</artifactId>
     <packaging>pom</packaging>
-    <version>MASTER-SNAPSHOT</version>
+    <version>0.7-beta.1</version>
 
     <inceptionYear>2011</inceptionYear>
 
@@ -36,6 +36,7 @@
     <modules>
         <module>struts2-arianna-plugin</module>
         <module>struts2-arianna-showcase</module>
+        <!-- module>struts2-arianna-test</module -->
     </modules>
 
     <!-- common dependency management -->
@@ -87,8 +88,8 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <source>1.5</source>
-                        <target>1.5</target>
+                        <source>1.6</source>
+                        <target>1.6</target>
                     </configuration>
                 </plugin>
 

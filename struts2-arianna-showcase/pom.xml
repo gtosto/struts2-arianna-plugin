@@ -4,7 +4,7 @@
     <parent>
         <groupId>xyz.timedrain.arianna</groupId>
         <artifactId>struts2-arianna-project</artifactId>
-        <version>MASTER-SNAPSHOT</version>
+        <version>0.7-beta.1</version>
     </parent>
 
     <artifactId>struts2-arianna-showcase</artifactId>
